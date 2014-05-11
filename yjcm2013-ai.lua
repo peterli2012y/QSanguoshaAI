@@ -22,7 +22,8 @@ function sgs.ai_cardsview_valuable.renxin(self, class_name, player)
 		end
 		if self:playerGetRound(dying) < self:playerGetRound(self.player) and dying:getHp() < 0 then return nil end
 		if not player:faceUp() then
-			if player:getHp() < 2 and (getCardsNum("Jink", player, self.player) > 0 or getCardsNum("Analeptic", player, self.player) > 0) then return nil end
+			if player:getHp() < 2 and (getCardsNum("Jink", player, self.player) > 0 or getCardsNum("Analeptic", player, self.player) > 0) 
+				and not player:needKongcheng(player, true) then return nil end
 			return "@RenxinCard=."
 		else
 			if not dying:hasFlag("Global_PreventPeach") then
